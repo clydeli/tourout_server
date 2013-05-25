@@ -12,6 +12,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	    <servlet-name>GetTours</servlet-name>
 	    <servlet-class>edu.cmu.tourout.GetToursServlet</servlet-class>
 	</servlet>
+	<servlet>
+        <servlet-name>FinishTour</servlet-name>
+        <servlet-class>edu.cmu.tourout.FinishTourServlet</servlet-class>
+    </servlet>
 	<servlet-mapping>
 		<servlet-name>StoreTour</servlet-name>
 		<url-pattern>/storeTour</url-pattern>
@@ -19,5 +23,9 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 	    <servlet-name>GetTours</servlet-name>
 	    <url-pattern>/getTours</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	    <servlet-name>FinishTour</servlet-name>
+        <url-pattern>/finishTour</url-pattern>
 	</servlet-mapping>
 </web-app>
