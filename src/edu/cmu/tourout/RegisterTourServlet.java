@@ -30,7 +30,7 @@ public class RegisterTourServlet extends HttpServlet {
                     return;
                 }
             }
-            visitorList = visitors.length == 0 ? newVisitor : visitorList + "," + newVisitor;
+            visitorList = visitorList.equalsIgnoreCase("") ? newVisitor : visitorList + "," + newVisitor;
             entity.setProperty("visitors", visitorList);
             datastore.put(entity);
         }
