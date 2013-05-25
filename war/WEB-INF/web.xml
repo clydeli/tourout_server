@@ -20,6 +20,18 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
         <servlet-name>RegisterTour</servlet-name>
         <servlet-class>edu.cmu.tourout.RegisterTourServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MyTours</servlet-name>
+        <servlet-class>edu.cmu.tourout.MyToursServlet</servlet-class>
+    </servlet>
+	<servlet>
+        <servlet-name>MyProvidedTours</servlet-name>
+        <servlet-class>edu.cmu.tourout.MyProvidedToursServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetTourDetail</servlet-name>
+        <servlet-class>edu.cmu.tourout.GetTourDetailServlet</servlet-class>
+    </servlet>
 	<servlet-mapping>
 		<servlet-name>StoreTour</servlet-name>
 		<url-pattern>/storeTour</url-pattern>
@@ -36,4 +48,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
         <servlet-name>RegisterTour</servlet-name>
         <url-pattern>/registerTour</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MyTours</servlet-name>
+        <url-pattern>/myTours</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MyProvidedTours</servlet-name>
+        <url-pattern>/myProvidedTours</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+	    <servlet-name>GetTourDetail</servlet-name>
+	    <url-pattern>/getTourDetail</url-pattern>
+	</servlet-mapping>
 </web-app>
