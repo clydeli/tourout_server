@@ -1,3 +1,4 @@
 war/WEB-INF/classes/*
 .settings
+war/WEB-INF/appengine-generated/*
 .classpath
