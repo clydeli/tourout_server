@@ -19,7 +19,8 @@ public class FinishTourServlet extends HttpServlet {
     private static DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        Key key = KeyFactory.stringToKey(request.getParameter("key"));
+    	
+    	Key key = KeyFactory.createKey("Tour", Long.parseLong(request.getParameter("key")));
         try {
             Entity entity = datastore.get(key);
             entity.setProperty("isFinished", true);
