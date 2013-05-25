@@ -29,7 +29,7 @@ public class GetToursServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
 
-        double userLantitude = Double.parseDouble(request.getParameter("lantitude"));
+        double userLatitude = Double.parseDouble(request.getParameter("latitude"));
         double userLongitude = Double.parseDouble(request.getParameter("longitude"));
 
         Query query = new Query("Tour");
@@ -41,9 +41,9 @@ public class GetToursServlet extends HttpServlet {
         while (entities.hasNext()) {
             Entity entity = entities.next();
             String coordinate = entity.getProperty("coordinates").toString();
-            double placeLantitude = Double.parseDouble(coordinate.split(",")[0]);
+            double placeLatitude = Double.parseDouble(coordinate.split(",")[0]);
             double placeLongitude = Double.parseDouble(coordinate.split(",")[1]);
-            double miles = distanceInMiles(userLantitude, userLongitude, placeLantitude, placeLongitude);
+            double miles = distanceInMiles(userLatitude, userLongitude, placeLatitude, placeLongitude);
             if (miles < 1000) {
                 results.add(entity);
             }
