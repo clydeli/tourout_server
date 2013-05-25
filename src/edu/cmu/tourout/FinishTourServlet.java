@@ -18,17 +18,17 @@ public class FinishTourServlet extends HttpServlet {
 
     private static DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Key key = KeyFactory.stringToKey(request.getParameter("key"));
         try {
             Entity entity = datastore.get(key);
             entity.setProperty("isFinished", true);
+            datastore.put(entity);
             response.setContentType("text/html");
             response.getWriter().println("");
         }
         catch (Exception e) {
-            
+            e.printStackTrace();
         }
     }
 }
