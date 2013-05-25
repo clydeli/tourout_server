@@ -20,7 +20,7 @@ public class RegisterTourServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String newVisitor = request.getParameter("visitor");
-        Key key = KeyFactory.stringToKey(request.getParameter("key"));
+        Key key = KeyFactory.createKey("Tour", Long.parseLong(request.getParameter("key")));
         try {
             Entity entity = datastore.get(key);
             String visitorList = entity.getProperty("visitors").toString();

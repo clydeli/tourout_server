@@ -28,9 +28,19 @@ public class GetToursServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-
-        double userLatitude = Double.parseDouble(request.getParameter("latitude"));
-        double userLongitude = Double.parseDouble(request.getParameter("longitude"));
+        String userLatitudeStr = request.getParameter("latitude");
+        String userLongitudeStr = request.getParameter("longitude");
+        boolean hasUserLocation;
+        double userLatitude = 0.0;
+        double userLongitude = 0.0;
+        try {
+            userLatitude = Double.parseDouble(userLatitudeStr);
+            userLongitude = Double.parseDouble(userLongitudeStr);
+            hasUserLocation = true;
+        }
+        catch (Exception e) {
+            hasUserLocation = false;
+        }
 
         Query query = new Query("Tour");
         Filter isFinishedFilter = new FilterPredicate("isFinished", FilterOperator.EQUAL, false);
@@ -41,10 +51,15 @@ public class GetToursServlet extends HttpServlet {
         while (entities.hasNext()) {
             Entity entity = entities.next();
             String coordinate = entity.getProperty("coordinates").toString();
-            double placeLatitude = Double.parseDouble(coordinate.split(",")[0]);
-            double placeLongitude = Double.parseDouble(coordinate.split(",")[1]);
-            double miles = distanceInMiles(userLatitude, userLongitude, placeLatitude, placeLongitude);
-            if (miles < 1000) {
+            if (hasUserLocation == true) {
+                double placeLatitude = Double.parseDouble(coordinate.split(",")[0]);
+                double placeLongitude = Double.parseDouble(coordinate.split(",")[1]);
+                double miles = distanceInMiles(userLatitude, userLongitude, placeLatitude, placeLongitude);
+                if (miles < 1000) {
+                    results.add(entity);
+                }
+            }
+            else {
                 results.add(entity);
             }
         }
